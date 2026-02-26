@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Modern CSS Design Tokens using oklch() */
+    --color-chocolate: oklch(0.35 0.08 40);
+    --color-vanilla: oklch(0.92 0.03 80);
+    --color-candle: oklch(0.35 0.8 25);
+    --color-flame: oklch(0.75 0.18 65);
+    --color-plate: light-dark(oklch(0.8 0 0), oklch(0.4 0 0));
+    --color-background: light-dark(oklch(0.25 0.01 280), oklch(0.15 0.02 280));
+}
+
+/* ========================================
+   MODERN CSS FEATURES SHOWCASE
+   ======================================== */
+
+/* 1. NATIVE LIGHT/DARK MODE - color-scheme property */
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
+}
+
+/* 2. light-dark() FUNCTION - Automatic theme-aware colors */
+.plate {
+    background-color: var(--color-plate);
+    box-shadow:
+        0 2px 0 light-dark(#b3b3b3, #4d4d4d),
+        0 4px 0 light-dark(#b3b3b3, #4d4d4d),
+        0 5px 40px light-dark(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+}
+
+.layer {
+    background-color: var(--color-chocolate);
+}
+
+.icing {
+    background-color: var(--color-vanilla);
+}
+
+.drip {
+    background-color: var(--color-vanilla);
+}
+
+.candle {
+    background-color: var(--color-candle);
+}
+
+.theme-toggle {
+    background: light-dark(oklch(0.95 0.02 280), oklch(0.25 0.02 280));
+    color: light-dark(oklch(0.2 0 0), oklch(0.95 0 0));
+    border: 2px solid light-dark(oklch(0.8 0.05 280), oklch(0.4 0.05 280));
+}
+
+.info {
+    background: light-dark(oklch(0.95 0.02 280 / 0.95), oklch(0.2 0.02 280 / 0.95));
+    color: light-dark(oklch(0.2 0 0), oklch(0.95 0 0));
+    box-shadow: 0 4px 20px light-dark(oklch(0 0 0 / 0.1), oklch(0 0 0 / 0.4));
+}
+
+.info strong {
+    color: light-dark(oklch(0.45 0.15 40), oklch(0.75 0.12 40));
+}
+
+.candle-toggle {
+    background: light-dark(oklch(0.88 0.15 50), oklch(0.58 0.2 45));
+    color: light-dark(oklch(0.2 0 0), oklch(0.98 0 0));
+    box-shadow: 0 4px 12px light-dark(oklch(0.5 0.15 50 / 0.2), oklch(0.8 0.25 45 / 0.1));
+}
+
+.candle-toggle:hover {
+    box-shadow: 0 6px 20px light-dark(oklch(0.5 0.15 50 / 0.3), oklch(0.8 0.25 45 / 0.15));
+}
+
+/* 3. :has() SELECTOR - State-aware CSS without JavaScript */
+/* Control button text based on checkbox state */
+#candle-lit:checked ~ .controls .lit-text {
+    display: inline;
+}
+
+#candle-lit:checked ~ .controls .unlit-text {
+    display: none;
+}
+
+#candle-lit:not(:checked) ~ .controls .lit-text {
+    display: none;
+}
+
+#candle-lit:not(:checked) ~ .controls .unlit-text {
+    display: inline;
+}
+
+/* Hide flame when candle is blown out - no JavaScript needed! */
+.cake-container:has(#candle-lit:not(:checked)) .flame {
+    opacity: 0;
+    animation: none;
+}
+
+/* Show confetti when candle is blown out */
+.cake-container:has(#candle-lit:not(:checked)) .confetti-wrapper {
+    opacity: 1;
+}
+
+/* Trigger confetti animation when candle is NOT lit */
+.cake-container:has(#candle-lit:not(:checked)) .confetti {
+    animation: confetti-fall 2s ease-out forwards;
+    animation-delay: var(--delay);
+}
+
+/* 4. CUSTOM PROPERTIES - Dynamic animation values without JavaScript */
+.confetti {
+    background: var(--color);
+}

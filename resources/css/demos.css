@@ -1,0 +1,581 @@
+@import 'tailwindcss';
+
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --color-surface: oklch(0.97 0.005 280);
+    --color-surface-alt: oklch(0.93 0.01 280);
+    --color-border: oklch(0.85 0.02 280);
+    --color-text: oklch(0.2 0 0);
+    --color-text-muted: oklch(0.45 0 0);
+    --color-accent: oklch(0.55 0.15 260);
+    --color-accent-light: oklch(0.92 0.04 260);
+    --color-code-bg: oklch(0.15 0.02 280);
+    --color-code-text: oklch(0.85 0.02 280);
+}
+
+/* ==========================================
+   DEMOS PAGE — BEFORE / AFTER CSS FEATURES
+   ========================================== */
+
+/* --- Tab system --- */
+.demo-tabs input[type="radio"] {
+    display: none;
+}
+
+.demo-tabs > nav > label {
+    cursor: pointer;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background: var(--color-surface-alt);
+    color: transparent;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.demo-tabs > nav > label code {
+    color: inherit;
+}
+
+/* Visited tabs: reveal text */
+.demo-tabs > nav > label.visited {
+    color: var(--color-text-muted);
+    user-select: auto;
+}
+
+/* Active tab styling */
+#tab-has:checked ~ nav > label[for="tab-has"],
+#tab-container:checked ~ nav > label[for="tab-container"],
+#tab-anchor:checked ~ nav > label[for="tab-anchor"],
+#tab-clamp:checked ~ nav > label[for="tab-clamp"],
+#tab-lightdark:checked ~ nav > label[for="tab-lightdark"] {
+    background: var(--color-surface);
+    color: var(--color-accent);
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-accent);
+    margin-bottom: -1px;
+    position: relative;
+    z-index: 1;
+}
+
+#tab-has:checked ~ nav > label[for="tab-has"] code,
+#tab-container:checked ~ nav > label[for="tab-container"] code,
+#tab-anchor:checked ~ nav > label[for="tab-anchor"] code,
+#tab-clamp:checked ~ nav > label[for="tab-clamp"] code,
+#tab-lightdark:checked ~ nav > label[for="tab-lightdark"] code {
+    color: var(--color-accent);
+}
+
+.demo-section {
+    display: none;
+}
+
+/* Show sections based on checked radio */
+#tab-has:checked ~ .demo-content .demo-has,
+#tab-container:checked ~ .demo-content .demo-container,
+#tab-anchor:checked ~ .demo-content .demo-anchor,
+#tab-clamp:checked ~ .demo-content .demo-clamp,
+#tab-lightdark:checked ~ .demo-content .demo-lightdark {
+    display: block;
+}
+
+/* --- Panel layout --- */
+.panel {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.panel-header.before {
+    background: oklch(0.94 0.03 25);
+    color: oklch(0.4 0.1 25);
+}
+
+.panel-header.after {
+    background: oklch(0.92 0.04 145);
+    color: oklch(0.35 0.12 145);
+}
+
+.panel-body {
+    padding: 1.5rem;
+}
+
+.code-block {
+    background: var(--color-code-bg);
+    color: var(--color-code-text);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+/* ==========================================
+   1. :has() DEMO
+   ========================================== */
+
+/* BEFORE: JS-controlled parent class */
+.has-before-card {
+    padding: 1.25rem;
+    border: 2px solid oklch(0.85 0 0);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.has-before-card.is-selected {
+    border-color: oklch(0.55 0.2 260);
+    background: oklch(0.95 0.03 260);
+    box-shadow: 0 4px 16px oklch(0.55 0.2 260 / 0.2);
+}
+
+/* AFTER: Pure CSS :has() */
+.has-after-card {
+    padding: 1.25rem;
+    border: 2px solid oklch(0.85 0 0);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.has-after-card:has(input:checked) {
+    border-color: oklch(0.55 0.2 260);
+    background: oklch(0.95 0.03 260);
+    box-shadow: 0 4px 16px oklch(0.55 0.2 260 / 0.2);
+}
+
+.has-after-card:has(input:checked) .card-title {
+    color: oklch(0.45 0.2 260);
+}
+
+/* --- Category Filter: Before (JS) --- */
+.filter-before-btn {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid oklch(0.85 0 0);
+    background: white;
+    color: oklch(0.4 0 0);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-before-btn.active {
+    background: oklch(0.55 0.15 260);
+    color: white;
+    border-color: oklch(0.55 0.15 260);
+}
+
+.filter-before-tag {
+    display: inline-block;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: white;
+    border: 1px solid oklch(0.88 0 0);
+    transition: opacity 0.3s;
+}
+
+.filter-before-tag.dimmed {
+    opacity: 0.15;
+}
+
+/* --- Category Filter: After (CSS :has()) --- */
+.filter-after-container input[type="radio"] {
+    display: none;
+}
+
+.filter-after-btn {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid oklch(0.85 0 0);
+    background: white;
+    color: oklch(0.4 0 0);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Active filter button */
+.filter-after-container:has(#filter-all:checked) label[for="filter-all"],
+.filter-after-container:has(#filter-css:checked) label[for="filter-css"],
+.filter-after-container:has(#filter-js:checked) label[for="filter-js"],
+.filter-after-container:has(#filter-html:checked) label[for="filter-html"] {
+    background: oklch(0.55 0.15 260);
+    color: white;
+    border-color: oklch(0.55 0.15 260);
+}
+
+.filter-tag {
+    display: inline-block;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: white;
+    border: 1px solid oklch(0.88 0 0);
+    transition: opacity 0.3s;
+}
+
+/* Dim non-matching tags */
+.filter-after-container:has(#filter-css:checked) .filter-tag:not([data-tag="css"]),
+.filter-after-container:has(#filter-js:checked) .filter-tag:not([data-tag="js"]),
+.filter-after-container:has(#filter-html:checked) .filter-tag:not([data-tag="html"]) {
+    opacity: 0.15;
+}
+
+/* ==========================================
+   2. CONTAINER QUERIES DEMO
+   ========================================== */
+
+/* BEFORE: Media queries only respond to viewport */
+.cq-before-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 600px) {
+    .cq-before-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.cq-before-card {
+    background: white;
+    border: 1px solid oklch(0.88 0 0);
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+/* AFTER: Container queries respond to parent size */
+.cq-container {
+    container-type: inline-size;
+    container-name: card-area;
+}
+
+.cq-after-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@container card-area (min-width: 400px) {
+    .cq-after-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@container card-area (min-width: 600px) {
+    .cq-after-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.cq-after-card {
+    background: white;
+    border: 1px solid oklch(0.88 0 0);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    transition: box-shadow 0.2s;
+}
+
+.cq-after-card:hover {
+    box-shadow: 0 4px 12px oklch(0 0 0 / 0.1);
+}
+
+/* Resizable wrapper */
+.resizable-wrapper {
+    resize: horizontal;
+    overflow: hidden;
+    border: 2px dashed oklch(0.7 0.1 260);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    min-width: 200px;
+    max-width: 100%;
+    background: oklch(0.97 0.01 260);
+}
+
+/* ==========================================
+   3. ANCHOR POSITIONING DEMO
+   ========================================== */
+
+/* BEFORE: Manual absolute positioning */
+.anchor-before-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.anchor-before-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: oklch(0.2 0 0);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.anchor-before-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: oklch(0.2 0 0);
+}
+
+.anchor-before-wrapper:hover .anchor-before-tooltip {
+    opacity: 1;
+}
+
+/* AFTER: CSS Anchor Positioning */
+.anchor-trigger {
+    anchor-name: --my-anchor;
+}
+
+.anchor-tooltip {
+    position: fixed;
+    position-anchor: --my-anchor;
+    bottom: anchor(top);
+    left: anchor(center);
+    translate: -50% -8px;
+    background: oklch(0.2 0 0);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.anchor-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: oklch(0.2 0 0);
+}
+
+.anchor-trigger:hover + .anchor-tooltip {
+    opacity: 1;
+}
+
+/* --- Popover menu shared styles --- */
+.popover-menu-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: oklch(0.25 0 0);
+    text-decoration: none;
+    transition: background 0.15s;
+}
+
+.popover-menu-item:hover {
+    background: oklch(0.95 0.01 260);
+}
+
+.popover-menu-item--danger {
+    color: oklch(0.5 0.2 25);
+}
+
+.popover-menu-item--danger:hover {
+    background: oklch(0.95 0.04 25);
+}
+
+/* BEFORE: Popover with JS + absolute positioning */
+.popover-before-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.popover-before-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: white;
+    border: 1px solid oklch(0.88 0 0);
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 24px oklch(0 0 0 / 0.12);
+    min-width: 160px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.popover-before-menu.is-open {
+    display: block;
+}
+
+/* AFTER: Popover API + Anchor Positioning */
+.popover-anchor-trigger {
+    anchor-name: --actions-btn;
+}
+
+.popover-after-menu {
+    position: fixed;
+    position-anchor: --actions-btn;
+    top: anchor(bottom);
+    left: anchor(left);
+    margin: 4px 0 0;
+    background: white;
+    border: 1px solid oklch(0.88 0 0);
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 24px oklch(0 0 0 / 0.12);
+    min-width: 160px;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* ==========================================
+   4. clamp() DEMO
+   ========================================== */
+
+/* BEFORE: Stepped font sizes with media queries */
+.clamp-before-heading {
+    font-size: 1rem;
+}
+
+@media (min-width: 480px) {
+    .clamp-before-heading { font-size: 1.25rem; }
+}
+
+@media (min-width: 768px) {
+    .clamp-before-heading { font-size: 1.75rem; }
+}
+
+@media (min-width: 1024px) {
+    .clamp-before-heading { font-size: 2.25rem; }
+}
+
+.clamp-before-text {
+    font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+    .clamp-before-text { font-size: 1rem; }
+}
+
+@media (min-width: 1024px) {
+    .clamp-before-text { font-size: 1.125rem; }
+}
+
+.clamp-before-spacing {
+    padding: 1rem;
+    margin-block: 1rem;
+    gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .clamp-before-spacing {
+        padding: 2rem;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .clamp-before-spacing {
+        padding: 3rem;
+        gap: 2rem;
+    }
+}
+
+/* AFTER: Fluid typography with clamp() */
+.clamp-after-heading {
+    font-size: clamp(1rem, 2.5vw + 0.5rem, 2.5rem);
+}
+
+.clamp-after-text {
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1.25rem);
+}
+
+.clamp-after-spacing {
+    padding: min(3rem, 5vw);
+    margin-block: max(1rem, 2vh);
+    gap: clamp(0.5rem, 2vw, 2rem);
+}
+
+/* ==========================================
+   5. light-dark() DEMO
+   ========================================== */
+
+/* BEFORE: Duplicated blocks with prefers-color-scheme */
+.ld-before-card {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #e0e0e0;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .ld-before-card {
+        background: #1a1a2e;
+        color: #e0e0e0;
+        border-color: #333355;
+    }
+}
+
+.ld-before-card .badge {
+    background: #e8e8f0;
+    color: #3a3a5c;
+}
+
+@media (prefers-color-scheme: dark) {
+    .ld-before-card .badge {
+        background: #2a2a4e;
+        color: #b0b0d0;
+    }
+}
+
+/* AFTER: light-dark() function — one declaration per property */
+.ld-after-area {
+    color-scheme: light dark;
+}
+
+.ld-after-card {
+    background: light-dark(#ffffff, #1a1a2e);
+    color: light-dark(#1a1a1a, #e0e0e0);
+    border: 1px solid light-dark(#e0e0e0, #333355);
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+}
+
+.ld-after-card .badge {
+    background: light-dark(#e8e8f0, #2a2a4e);
+    color: light-dark(#3a3a5c, #b0b0d0);
+}
+
+/* Force light/dark for demo toggle */
+.force-light { color-scheme: light; }
+.force-dark { color-scheme: dark; }
