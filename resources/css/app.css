@@ -87,7 +87,7 @@ body {
 
 /* 3. :has() SELECTOR - State-aware CSS without JavaScript */
 /* Control button text based on checkbox state */
-/* #candle-lit:checked ~ .controls .lit-text {
+#candle-lit:checked ~ .controls .lit-text {
     display: inline;
 }
 
@@ -101,13 +101,13 @@ body {
 
 #candle-lit:not(:checked) ~ .controls .unlit-text {
     display: inline;
-} */
+}
 
 /* Hide flame when candle is blown out - no JavaScript needed! */
-/* .cake-container:has(#candle-lit:not(:checked)) .flame {
+.cake-container:has(#candle-lit:not(:checked)) .flame {
     opacity: 0;
     animation: none;
-} */
+}
 
 /* Show confetti when candle is blown out */
 /* .cake-container:has(#candle-lit:not(:checked)) .confetti-wrapper {
