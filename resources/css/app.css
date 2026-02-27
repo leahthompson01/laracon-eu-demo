@@ -120,7 +120,8 @@ body {
     animation-delay: var(--delay);
 } */
 
-/* 4. CUSTOM PROPERTIES - Dynamic animation values without JavaScript */
+/* CUSTOM PROPERTIES - Each confetti piece has its own dynamic values set inline */
 /* .confetti {
-    background: var(--color);
+    background-color: var(--color);
 } */
+
