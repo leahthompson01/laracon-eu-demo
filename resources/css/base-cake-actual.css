@@ -1,0 +1,358 @@
+/* ================================================
+   BASE CAKE
+   Structural styles, animations, and base color scheme.
+   Colors for individual elements (plate, layers, buttons)
+   are provided by the importing stylesheet
+   (app.css for birthday-cake, cake-new-css-features.css
+   for the step demos).
+   ================================================ */
+
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    background-color: light-dark(#f5f0eb, #1a1520);
+    color: light-dark(#333, #e0dce5);
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* --- Cake --- */
+
+.cake {
+    position: absolute;
+    width: 250px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-top: -70px;
+    margin-left: -125px;
+}
+
+.cake > * {
+    position: absolute;
+}
+
+/* --- Plate --- */
+
+.plate {
+    width: 270px;
+    height: 110px;
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    border-radius: 50%;
+}
+
+/* --- Cake Layers --- */
+
+.layer {
+    position: absolute;
+    display: block;
+    width: 250px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow:
+        0 2px 0px #5a421b,
+        0 4px 0px #4a3310,
+        0 6px 0px #49320f,
+        0 8px 0px #48320e,
+        0 10px 0px #47310e,
+        0 12px 0px #46310d,
+        0 14px 0px #45300d,
+        0 16px 0px #44300c,
+        0 18px 0px #432f0c,
+        0 20px 0px #422f0b,
+        0 22px 0px #412e0b,
+        0 24px 0px #402e0a,
+        0 26px 0px #3f2d0a,
+        0 28px 0px #3e2d09,
+        0 30px 0px #3d2c09;
+}
+
+.layer-top {
+    top: 0px;
+}
+
+.layer-middle {
+    top: 33px;
+}
+
+.layer-bottom {
+    top: 66px;
+}
+
+/* --- Icing --- */
+
+.icing {
+    top: 2px;
+    left: 5px;
+    width: 240px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.icing::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    bottom: 6px;
+    left: 5px;
+    background-color: #f5ead9;
+    box-shadow:
+        0 0 4px #f8f0e3,
+        0 0 4px #f8f0e3,
+        0 0 4px #f8f0e3;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* --- Drips --- */
+
+.drip {
+    display: block;
+    width: 50px;
+    height: 60px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.drip1 {
+    top: 53px;
+    left: 5px;
+    transform: skewY(15deg);
+    height: 48px;
+    width: 40px;
+}
+
+.drip2 {
+    top: 69px;
+    left: 181px;
+    transform: skewY(-15deg);
+}
+
+.drip3 {
+    top: 54px;
+    left: 90px;
+    width: 80px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+/* --- Candle --- */
+
+.candle {
+    width: 16px;
+    height: 50px;
+    border-radius: 8px / 4px;
+    top: -20px;
+    left: 50%;
+    margin-left: -8px;
+    z-index: 10;
+}
+
+.candle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #9a1a23;
+}
+
+/* --- Flame --- */
+
+.flame {
+    position: absolute;
+    background-color: orange;
+    width: 15px;
+    height: 35px;
+    border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+    top: -34px;
+    left: 50%;
+    margin-left: -7.5px;
+    z-index: 10;
+    box-shadow:
+        0 0 10px rgba(255, 165, 0, 0.5),
+        0 0 20px rgba(255, 165, 0, 0.5),
+        0 0 60px rgba(255, 165, 0, 0.5),
+        0 0 80px rgba(255, 165, 0, 0.5);
+    transform-origin: 50% 90%;
+    animation: flicker 1s ease-in-out alternate infinite;
+}
+
+@keyframes flicker {
+    0% {
+        transform: skewX(5deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.2),
+            0 0 20px rgba(255, 165, 0, 0.2),
+            0 0 60px rgba(255, 165, 0, 0.2),
+            0 0 80px rgba(255, 165, 0, 0.2);
+    }
+    25% {
+        transform: skewX(-5deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.5),
+            0 0 20px rgba(255, 165, 0, 0.5),
+            0 0 60px rgba(255, 165, 0, 0.5),
+            0 0 80px rgba(255, 165, 0, 0.5);
+    }
+    50% {
+        transform: skewX(10deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.3),
+            0 0 20px rgba(255, 165, 0, 0.3),
+            0 0 60px rgba(255, 165, 0, 0.3),
+            0 0 80px rgba(255, 165, 0, 0.3);
+    }
+    75% {
+        transform: skewX(-10deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.4),
+            0 0 20px rgba(255, 165, 0, 0.4),
+            0 0 60px rgba(255, 165, 0, 0.4),
+            0 0 80px rgba(255, 165, 0, 0.4);
+    }
+    100% {
+        transform: skewX(5deg);
+        box-shadow:
+            0 0 10px rgba(255, 165, 0, 0.5),
+            0 0 20px rgba(255, 165, 0, 0.5),
+            0 0 60px rgba(255, 165, 0, 0.5),
+            0 0 80px rgba(255, 165, 0, 0.5);
+    }
+}
+
+/* --- Theme Toggle --- */
+
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    z-index: 100;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+}
+
+/* --- Info Box --- */
+
+.info {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    max-width: 400px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.info h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.info ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.info li {
+    margin: 0.25rem 0;
+}
+
+/* --- Cake Container --- */
+
+.cake-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.cake-container .cake,
+.cake-container .controls {
+    pointer-events: auto;
+}
+
+/* --- Hidden Checkbox --- */
+
+#candle-lit {
+    display: none;
+}
+
+/* --- Controls --- */
+
+.controls {
+    position: fixed;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+}
+
+/* --- Candle Toggle Button --- */
+
+.candle-toggle {
+    display: block;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    user-select: none;
+}
+
+.candle-toggle:hover {
+    transform: translateY(-2px);
+}
+
+.candle-toggle:active {
+    transform: translateY(0);
+}
+
+/* --- Confetti --- */
+
+.confetti-wrapper {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    overflow: visible;
+    z-index: 100;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    left: 50%;
+    border-radius: 2px;
+    opacity: 0;
+}
+
+@keyframes confetti-fall {
+    from {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translate(var(--x), var(--y)) rotate(var(--r));
+        opacity: 0;
+    }
+}

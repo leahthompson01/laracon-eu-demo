@@ -1,0 +1,215 @@
+/* ================================================
+   NEW CSS FEATURES
+   Layers on top of base-cake.css.
+   Organized by the 5 features demonstrated in the talk.
+   ================================================ */
+
+/* ================================================
+   FEATURE 1 — light-dark() & color-scheme
+   Native dark mode. No class toggling, no media queries.
+   ================================================ */
+
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    background-color: light-dark(#f5f0eb, #1a1520);
+    color: light-dark(#333, #e0dce5);
+}
+
+.theme-toggle {
+    background-color: light-dark(#fff, #2a2535);
+    color: light-dark(#333, #e0dce5);
+    border-color: light-dark(#ddd, #444);
+}
+
+.plate {
+    background-color: light-dark(#e8e8e8, #3a3545);
+    box-shadow: 0 4px 12px light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+}
+
+.info {
+    background-color: light-dark(#ffffff, #2a2535);
+    border-color: light-dark(#ddd, #444);
+    box-shadow: 0 4px 24px light-dark(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.3));
+}
+
+.candle-toggle {
+    background-color: light-dark(#fff, #2a2535);
+    color: light-dark(#333, #e0dce5);
+    border-color: light-dark(#ddd, #444);
+}
+
+/* ================================================
+   FEATURE 2 — :has() Selector
+   Parent reacts to child state. Zero JS for interactivity.
+   ================================================ */
+
+/* Candle IS lit (checkbox checked) */
+.cake-container:has(#candle-lit:checked) .flame {
+    display: block;
+}
+
+.cake-container:has(#candle-lit:checked) .confetti-wrapper {
+    opacity: 0;
+}
+
+.cake-container:has(#candle-lit:checked) .lit-text {
+    display: inline;
+}
+
+.cake-container:has(#candle-lit:checked) .unlit-text {
+    display: none;
+}
+
+/* Candle is NOT lit (checkbox unchecked) */
+.cake-container:has(#candle-lit:not(:checked)) .flame {
+    display: none;
+}
+
+.cake-container:has(#candle-lit:not(:checked)) .confetti-wrapper {
+    opacity: 1;
+}
+
+.cake-container:has(#candle-lit:not(:checked)) .confetti {
+    animation: confetti-fall 1.5s ease-out forwards;
+    animation-delay: var(--delay);
+}
+
+.cake-container:has(#candle-lit:not(:checked)) .lit-text {
+    display: none;
+}
+
+.cake-container:has(#candle-lit:not(:checked)) .unlit-text {
+    display: inline;
+}
+
+/* ================================================
+   FEATURE 3 — clamp() / min() / max()
+   Fluid sizing. No breakpoints needed.
+   ================================================ */
+
+:root {
+    --cake-scale: clamp(0.7, 0.5 + 0.5vw, 1.3);
+}
+
+.theme-toggle {
+    top: min(32px, 4vw);
+    right: min(32px, 4vw);
+    padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2.5vw, 24px);
+    font-size: clamp(12px, 1.5vw, 14px);
+}
+
+.info {
+    bottom: min(32px, 4vw);
+    left: min(32px, 4vw);
+    max-width: clamp(280px, 35vw, 400px);
+    padding: clamp(16px, 2.5vw, 24px);
+    font-size: clamp(12px, 1.4vw, 14px);
+}
+
+.info h2 {
+    font-size: clamp(14px, 1.8vw, 18px);
+}
+
+.info .hint {
+    font-size: clamp(11px, 1.2vw, 13px);
+}
+
+.controls {
+    right: min(32px, 4vw);
+}
+
+.candle-toggle {
+    padding: clamp(12px, 1.8vw, 16px) clamp(16px, 2.5vw, 24px);
+    font-size: clamp(14px, 1.6vw, 16px);
+}
+
+.cake {
+    transform: scale(var(--cake-scale));
+}
+
+/* ================================================
+   FEATURE 4 — Container Queries
+   Component adapts to its container, not the viewport.
+   ================================================ */
+
+.cake-scene {
+    container-type: inline-size;
+    container-name: cake-scene;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@container cake-scene (max-width: 600px) {
+    .info {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        max-width: 100%;
+        margin: 0 16px;
+        order: 2;
+        position-anchor: auto;
+        translate: none;
+    }
+
+    .controls {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        order: 3;
+        text-align: center;
+        position-anchor: auto;
+        margin-top: 0;
+    }
+
+    .cake-container {
+        position: relative;
+        inset: auto;
+        order: 1;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* ================================================
+   FEATURE 5 — Anchor Positioning
+   Declarative element attachment. No positioning math.
+   ================================================ */
+
+.cake {
+    anchor-name: --cake;
+}
+
+.candle {
+    anchor-name: --candle;
+}
+
+/* Controls anchored to the candle */
+.controls {
+    position-anchor: --candle;
+    top: anchor(center);
+    left: anchor(right);
+    right: auto;
+    transform: none;
+    margin-left: 32px;
+}
+
+/* Info panel anchored to the cake */
+.info {
+    position-anchor: --cake;
+    bottom: anchor(bottom);
+    right: anchor(right);
+    left: auto;
+    translate: 0 100%;
+    margin-top: 32px;
+}
