@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Cake - Modern CSS Showcase</title>
-    @vite(['resources/css/app.css', 'resources/css/cake.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/base-cake.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -46,18 +46,30 @@
 
             <!-- Confetti -->
             <div class="confetti-wrapper">
-                <div class="confetti" style="--x: -200px; --y: -300px; --r: 180deg; --delay: 0s; --color: oklch(0.7 0.2 330);"></div>
-                <div class="confetti" style="--x: 200px; --y: -350px; --r: -150deg; --delay: 0.1s; --color: oklch(0.7 0.2 60);"></div>
-                <div class="confetti" style="--x: -160px; --y: -400px; --r: 200deg; --delay: 0.2s; --color: oklch(0.7 0.2 240);"></div>
-                <div class="confetti" style="--x: 240px; --y: -320px; --r: -120deg; --delay: 0.15s; --color: oklch(0.7 0.2 120);"></div>
-                <div class="confetti" style="--x: -120px; --y: -440px; --r: 160deg; --delay: 0.25s; --color: oklch(0.7 0.2 300);"></div>
-                <div class="confetti" style="--x: 180px; --y: -380px; --r: -180deg; --delay: 0.05s; --color: oklch(0.7 0.2 180);"></div>
-                <div class="confetti" style="--x: -220px; --y: -340px; --r: 220deg; --delay: 0.3s; --color: oklch(0.7 0.2 30);"></div>
-                <div class="confetti" style="--x: 140px; --y: -420px; --r: -90deg; --delay: 0.12s; --color: oklch(0.7 0.2 270);"></div>
-                <div class="confetti" style="--x: -260px; --y: -360px; --r: 240deg; --delay: 0.18s; --color: oklch(0.7 0.2 150);"></div>
-                <div class="confetti" style="--x: 280px; --y: -390px; --r: -200deg; --delay: 0.08s; --color: oklch(0.7 0.2 210);"></div>
-                <div class="confetti" style="--x: -180px; --y: -450px; --r: 190deg; --delay: 0.22s; --color: oklch(0.7 0.2 90);"></div>
-                <div class="confetti" style="--x: 220px; --y: -410px; --r: -160deg; --delay: 0.14s; --color: oklch(0.7 0.2 270);"></div>
+                <div class="confetti"
+                    style="--x: -200px; --y: -300px; --r: 180deg; --delay: 0s; --color: oklch(0.7 0.2 330);"></div>
+                <div class="confetti"
+                    style="--x: 200px; --y: -350px; --r: -150deg; --delay: 0.1s; --color: oklch(0.7 0.2 60);"></div>
+                <div class="confetti"
+                    style="--x: -160px; --y: -400px; --r: 200deg; --delay: 0.2s; --color: oklch(0.7 0.2 240);"></div>
+                <div class="confetti"
+                    style="--x: 240px; --y: -320px; --r: -120deg; --delay: 0.15s; --color: oklch(0.7 0.2 120);"></div>
+                <div class="confetti"
+                    style="--x: -120px; --y: -440px; --r: 160deg; --delay: 0.25s; --color: oklch(0.7 0.2 300);"></div>
+                <div class="confetti"
+                    style="--x: 180px; --y: -380px; --r: -180deg; --delay: 0.05s; --color: oklch(0.7 0.2 180);"></div>
+                <div class="confetti"
+                    style="--x: -220px; --y: -340px; --r: 220deg; --delay: 0.3s; --color: oklch(0.7 0.2 30);"></div>
+                <div class="confetti"
+                    style="--x: 140px; --y: -420px; --r: -90deg; --delay: 0.12s; --color: oklch(0.7 0.2 270);"></div>
+                <div class="confetti"
+                    style="--x: -260px; --y: -360px; --r: 240deg; --delay: 0.18s; --color: oklch(0.7 0.2 150);"></div>
+                <div class="confetti"
+                    style="--x: 280px; --y: -390px; --r: -200deg; --delay: 0.08s; --color: oklch(0.7 0.2 210);"></div>
+                <div class="confetti"
+                    style="--x: -180px; --y: -450px; --r: 190deg; --delay: 0.22s; --color: oklch(0.7 0.2 90);"></div>
+                <div class="confetti"
+                    style="--x: 220px; --y: -410px; --r: -160deg; --delay: 0.14s; --color: oklch(0.7 0.2 270);"></div>
             </div>
         </div>
 

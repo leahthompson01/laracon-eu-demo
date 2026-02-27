@@ -8,6 +8,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/css/demos.css',
+                'resources/css/base-cake.css',
                 'resources/css/cake-step-0.css',
                 'resources/css/cake-step-1.css',
                 'resources/css/cake-step-2.css',

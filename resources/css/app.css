@@ -11,11 +11,11 @@
 
     /* Modern CSS Design Tokens using oklch() */
     --color-chocolate: oklch(0.35 0.08 40);
-    --color-vanilla: oklch(0.92 0.03 80);
+    --color-vanilla:light-dark( oklch(0.88 0.15 50), oklch(0.92 0.03 80));
     --color-candle: oklch(0.35 0.8 25);
     --color-flame: oklch(0.75 0.18 65);
     --color-plate: light-dark(oklch(0.8 0 0), oklch(0.4 0 0));
-    --color-background: light-dark(oklch(0.25 0.01 280), oklch(0.15 0.02 280));
+    --color-background: light-dark(oklch(0.9147 0.0641 91.06 / 30%), oklch(0.15 0.02 280));
 }
 
 /* ========================================
@@ -23,11 +23,13 @@
    ======================================== */
 
 /* 1. NATIVE LIGHT/DARK MODE - color-scheme property */
+/* uncomment this */
 :root {
     color-scheme: light dark;
 }
 
 body {
+    /* background-color: #f5f0eb; */
     background-color: var(--color-background);
     transition: background-color 0.3s ease;
 }
@@ -58,13 +60,13 @@ body {
 }
 
 .theme-toggle {
-    background: light-dark(oklch(0.95 0.02 280), oklch(0.25 0.02 280));
+    background: light-dark(#fff, oklch(0.25 0.02 280));
     color: light-dark(oklch(0.2 0 0), oklch(0.95 0 0));
     border: 2px solid light-dark(oklch(0.8 0.05 280), oklch(0.4 0.05 280));
 }
 
 .info {
-    background: light-dark(oklch(0.95 0.02 280 / 0.95), oklch(0.2 0.02 280 / 0.95));
+    background: light-dark(#fff, oklch(0.2 0.02 280 / 0.95));
     color: light-dark(oklch(0.2 0 0), oklch(0.95 0 0));
     box-shadow: 0 4px 20px light-dark(oklch(0 0 0 / 0.1), oklch(0 0 0 / 0.4));
 }
@@ -85,7 +87,7 @@ body {
 
 /* 3. :has() SELECTOR - State-aware CSS without JavaScript */
 /* Control button text based on checkbox state */
-#candle-lit:checked ~ .controls .lit-text {
+/* #candle-lit:checked ~ .controls .lit-text {
     display: inline;
 }
 
@@ -99,26 +101,26 @@ body {
 
 #candle-lit:not(:checked) ~ .controls .unlit-text {
     display: inline;
-}
+} */
 
 /* Hide flame when candle is blown out - no JavaScript needed! */
-.cake-container:has(#candle-lit:not(:checked)) .flame {
+/* .cake-container:has(#candle-lit:not(:checked)) .flame {
     opacity: 0;
     animation: none;
-}
+} */
 
 /* Show confetti when candle is blown out */
-.cake-container:has(#candle-lit:not(:checked)) .confetti-wrapper {
+/* .cake-container:has(#candle-lit:not(:checked)) .confetti-wrapper {
     opacity: 1;
-}
+} */
 
 /* Trigger confetti animation when candle is NOT lit */
-.cake-container:has(#candle-lit:not(:checked)) .confetti {
+/* .cake-container:has(#candle-lit:not(:checked)) .confetti {
     animation: confetti-fall 2s ease-out forwards;
     animation-delay: var(--delay);
-}
+} */
 
 /* 4. CUSTOM PROPERTIES - Dynamic animation values without JavaScript */
-.confetti {
+/* .confetti {
     background: var(--color);
-}
+} */
