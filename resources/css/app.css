@@ -31,7 +31,6 @@
    ======================================== */
 
 /* 1. NATIVE LIGHT/DARK MODE - color-scheme property */
-/* uncomment this */
 /* :root {
     color-scheme: light dark;
 } */
@@ -39,7 +38,7 @@
 body {
     background-color: #f5f0eb;
     /* background-color: var(--color-background); */
-    /* transition: background-color 0.3s ease; */
+     /* transition: background-color 0.3s ease; */
 }
 .icing, .drip{
     background-color: oklch(0.88 0.15 50);
@@ -132,68 +131,3 @@ body {
 /* .confetti {
     background-color: var(--color);
 } */
-
-/* --- Flame --- */
-
-.flame {
-    position: absolute;
-    background-color: orange;
-    width: 15px;
-    height: 35px;
-    border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
-    top: -34px;
-    left: 50%;
-    margin-left: -7.5px;
-    z-index: 10;
-    box-shadow:
-        0 0 10px rgba(255, 165, 0, 0.5),
-        0 0 20px rgba(255, 165, 0, 0.5),
-        0 0 60px rgba(255, 165, 0, 0.5),
-        0 0 80px rgba(255, 165, 0, 0.5);
-    transform-origin: 50% 90%;
-    animation: flicker 1s ease-in-out alternate infinite;
-}
-
-@keyframes flicker {
-    0% {
-        transform: skewX(5deg);
-        box-shadow:
-            0 0 10px rgba(255, 165, 0, 0.2),
-            0 0 20px rgba(255, 165, 0, 0.2),
-            0 0 60px rgba(255, 165, 0, 0.2),
-            0 0 80px rgba(255, 165, 0, 0.2);
-    }
-    25% {
-        transform: skewX(-5deg);
-    }
-    50% {
-        transform: skewX(10deg);
-        box-shadow:
-            0 0 10px rgba(255, 165, 0, 0.3),
-            0 0 20px rgba(255, 165, 0, 0.3),
-            0 0 60px rgba(255, 165, 0, 0.3),
-            0 0 80px rgba(255, 165, 0, 0.3);
-    }
-    75% {
-        transform: skewX(-10deg);
-    }
-    100% {
-        transform: skewX(5deg);
-        box-shadow:
-            0 0 10px rgba(255, 165, 0, 0.5),
-            0 0 20px rgba(255, 165, 0, 0.5),
-            0 0 60px rgba(255, 165, 0, 0.5),
-            0 0 80px rgba(255, 165, 0, 0.5);
-    }
-}
-
-@keyframes confetti-fall {
-    from {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
-    }
-    to {
-        transform: translate(var(--x), var(--y)) rotate(var(--r));
-        opacity: 0;
-    }
-}
