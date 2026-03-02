@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Cake - Modern CSS Showcase</title>
-    @vite(['resources/css/app.css', 'resources/css/base-cake.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/base-cake.css'])
 </head>
 
 <body>
