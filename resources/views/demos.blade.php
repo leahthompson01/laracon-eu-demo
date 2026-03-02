@@ -65,10 +65,10 @@
                             </div>
 
                             <div class="code-block text-xs">// JavaScript required
-                                checkbox.addEventListener('change', () => {
-                                card.classList.toggle('is-selected',
-                                checkbox.checked);
-                                });</div>
+checkbox.addEventListener('change', () => {
+card.classList.toggle('is-selected',
+checkbox.checked);
+});</div>
                         </div>
                     </div>
 
@@ -88,10 +88,10 @@
                             </div>
 
                             <div class="code-block text-xs">/* No JavaScript! */
-                                .card:has(input:checked) {
-                                border-color: var(--accent);
-                                background: var(--accent-light);
-                                }</div>
+.card:has(input:checked) {
+border-color: var(--accent);
+background: var(--accent-light);
+}</div>
                         </div>
                     </div>
                 </div>
@@ -125,16 +125,16 @@
                             </div>
 
                             <div class="code-block text-xs mt-4">// JavaScript required
-                                btns.forEach(btn => {
-                                btn.addEventListener('click', () => {
-                                const filter = btn.dataset.filter;
-                                items.forEach(item => {
-                                item.classList.toggle('dimmed',
-                                filter !== 'all'
-                                && item.dataset.tag !== filter);
-                                });
-                                });
-                                });</div>
+btns.forEach(btn => {
+btn.addEventListener('click', () => {
+const filter = btn.dataset.filter;
+items.forEach(item => {
+item.classList.toggle('dimmed',
+filter !== 'all'
+&& item.dataset.tag !== filter);
+});
+});
+});</div>
                         </div>
                     </div>
 
@@ -170,11 +170,11 @@
                             </div>
 
                             <div class="code-block text-xs mt-4">/* No JavaScript! */
-                                .container:has(#filter-css:checked)
-                                [data-tag]:not([data-tag="css"]) {
-                                opacity: 0.2;
-                                }
-                                /* One rule per filter — done. */</div>
+.container:has(#filter-css:checked)
+[data-tag]:not([data-tag="css"]) {
+opacity: 0.2;
+}
+/* One rule per filter — done. */</div>
                         </div>
                     </div>
                 </div>
@@ -204,9 +204,9 @@
                             </div>
 
                             <div class="code-block text-xs mt-4">@media (min-width: 600px) {
-                                .grid { grid-template-columns: 1fr 1fr; }
-                                }
-                                /* Responds to viewport only */</div>
+.grid { grid-template-columns: 1fr 1fr; }
+}
+/* Responds to viewport only */</div>
                         </div>
                     </div>
 
@@ -233,10 +233,10 @@
 
                             <div class="code-block text-xs mt-4">.wrapper { container-type: inline-size; }
 
-                                @container (min-width: 400px) {
-                                .grid { grid-template-columns: 1fr 1fr; }
-                                }
-                                /* Responds to parent container! */</div>
+@container (min-width: 400px) {
+.grid { grid-template-columns: 1fr 1fr; }
+}
+/* Responds to parent container! */</div>
                         </div>
                     </div>
                 </div>
@@ -270,13 +270,13 @@
                             </div>
 
                             <div class="code-block text-xs">.wrapper { position: relative; }
-                                .tooltip {
-                                position: absolute;
-                                bottom: calc(100% + 8px);
-                                left: 50%;
-                                transform: translateX(-50%);
-                                }
-                                /* Fragile, breaks on scroll/resize */</div>
+.tooltip {
+position: absolute;
+bottom: calc(100% + 8px);
+left: 50%;
+transform: translateX(-50%);
+}
+/* Fragile, breaks on scroll/resize */</div>
                         </div>
                     </div>
 
@@ -296,13 +296,13 @@
                             </div>
 
                             <div class="code-block text-xs">.button { anchor-name: --my-anchor; }
-                                .tooltip {
-                                position: fixed;
-                                position-anchor: --my-anchor;
-                                bottom: anchor(top);
-                                left: anchor(center);
-                                }
-                                /* Declarative, no wrapper needed! */</div>
+.tooltip {
+position: fixed;
+position-anchor: --my-anchor;
+bottom: anchor(top);
+left: anchor(center);
+}
+/* Declarative, no wrapper needed! */</div>
                         </div>
                     </div>
                 </div>
@@ -333,23 +333,23 @@
                             </div>
 
                             <div class="code-block text-xs">// JavaScript required
-                                btn.addEventListener('click', () => {
-                                menu.classList.toggle('is-open');
-                                });
-                                document.addEventListener('click', (e) => {
-                                if (!wrapper.contains(e.target))
-                                menu.classList.remove('is-open');
-                                });
+btn.addEventListener('click', () => {
+menu.classList.toggle('is-open');
+});
+document.addEventListener('click', (e) => {
+if (!wrapper.contains(e.target))
+menu.classList.remove('is-open');
+});
 
-                                /* CSS */
-                                .wrapper { position: relative; }
-                                .menu {
-                                position: absolute;
-                                top: calc(100% + 4px);
-                                right: 0;
-                                display: none;
-                                }
-                                .menu.is-open { display: block; }</div>
+/* CSS */
+.wrapper { position: relative; }
+.menu {
+position: absolute;
+top: calc(100% + 4px);
+right: 0;
+display: none;
+}
+.menu.is-open { display: block; }</div>
                         </div>
                     </div>
 
@@ -374,20 +374,20 @@
                             </div>
 
                             <div class="code-block text-xs">/* Zero JavaScript! */
-                                .button {
-                                anchor-name: --actions-btn;
-                                }
-                                [popover] {
-                                position: fixed;
-                                position-anchor: --actions-btn;
-                                top: anchor(bottom);
-                                left: anchor(left);
-                                margin: 4px 0 0;
-                                }
+.button {
+anchor-name: --actions-btn;
+}
+[popover] {
+position: fixed;
+position-anchor: --actions-btn;
+top: anchor(bottom);
+left: anchor(left);
+margin: 4px 0 0;
+}
 
-                                &lt;button popovertarget="menu">Actions&lt;/button>
-                                &lt;div id="menu" popover>...&lt;/div>
-                                /* Browser handles open, close & light-dismiss */</div>
+&lt;button popovertarget="menu">Actions&lt;/button>
+&lt;div id="menu" popover>...&lt;/div>
+/* Browser handles open, close & light-dismiss */</div>
                         </div>
                     </div>
                 </div>
@@ -419,16 +419,16 @@
 
                             <div class="code-block text-xs mt-4">h2 { font-size: 1rem; }
 
-                                @media (min-width: 480px) {
-                                h2 { font-size: 1.25rem; }
-                                }
-                                @media (min-width: 768px) {
-                                h2 { font-size: 1.75rem; }
-                                }
-                                @media (min-width: 1024px) {
-                                h2 { font-size: 2.25rem; }
-                                }
-                                /* 4 declarations for one property! */</div>
+@media (min-width: 480px) {
+h2 { font-size: 1.25rem; }
+}
+@media (min-width: 768px) {
+h2 { font-size: 1.75rem; }
+}
+@media (min-width: 1024px) {
+h2 { font-size: 2.25rem; }
+}
+/* 4 declarations for one property! */</div>
                         </div>
                     </div>
 
@@ -447,13 +447,13 @@
                             </div>
 
                             <div class="code-block text-xs mt-4">h2 {
-                                font-size: clamp(1rem, 2.5vw + 0.5rem, 2.5rem);
-                                }
-                                .box {
-                                padding: min(3rem, 5vw);
-                                gap: clamp(0.5rem, 2vw, 2rem);
-                                }
-                                /* One line. Smooth. Done. */</div>
+font-size: clamp(1rem, 2.5vw + 0.5rem, 2.5rem);
+}
+.box {
+padding: min(3rem, 5vw);
+gap: clamp(0.5rem, 2vw, 2rem);
+}
+/* One line. Smooth. Done. */</div>
                         </div>
                     </div>
                 </div>
@@ -494,18 +494,18 @@
                             </div>
 
                             <div class="code-block text-xs">.card {
-                                background: #ffffff;
-                                color: #1a1a1a;
-                                border: 1px solid #e0e0e0;
-                                }
-                                @media (prefers-color-scheme: dark) {
-                                .card {
-                                background: #1a1a2e;
-                                color: #e0e0e0;
-                                border-color: #333355;
-                                }
-                                }
-                                /* Every property duplicated! */</div>
+background: #ffffff;
+color: #1a1a1a;
+border: 1px solid #e0e0e0;
+}
+@media (prefers-color-scheme: dark) {
+.card {
+background: #1a1a2e;
+color: #e0e0e0;
+border-color: #333355;
+}
+}
+/* Every property duplicated! */</div>
                         </div>
                     </div>
 
@@ -534,12 +534,12 @@
                             </div>
 
                             <div class="code-block text-xs mt-4">:root { color-scheme: light dark; }
-                                .card {
-                                background: light-dark(#fff, #1a1a2e);
-                                color: light-dark(#1a1a1a, #e0e0e0);
-                                border: 1px solid light-dark(#e0e0e0, #333);
-                                }
-                                /* One block. Both themes. Done. */</div>
+.card {
+background: light-dark(#fff, #1a1a2e);
+color: light-dark(#1a1a1a, #e0e0e0);
+border: 1px solid light-dark(#e0e0e0, #333);
+}
+/* One block. Both themes. Done. */</div>
                         </div>
                     </div>
                 </div>
