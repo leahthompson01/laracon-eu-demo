@@ -9,10 +9,11 @@
 </head>
 
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">
+    <input type="checkbox" id="theme-toggle" style="display: none;">
+    <label for="theme-toggle" class="theme-toggle">
         <span class="light-mode-text">🌙 Dark Mode</span>
-        <span class="dark-mode-text" style="display: none;">☀️ Light Mode</span>
-    </button>
+        <span class="dark-mode-text">☀️ Light Mode</span>
+    </label>
 
     <div class="info">
         <h2>🎂 Modern CSS Features</h2>
@@ -81,23 +82,6 @@
         </div>
     </div>
 
-    <script>
-        function toggleTheme() {
-            const html = document.documentElement;
-            const isDark = html.style.colorScheme === 'dark';
-            html.style.colorScheme = isDark ? 'light' : 'dark';
-
-            document.querySelector('.light-mode-text').style.display = isDark ? 'inline' : 'none';
-            document.querySelector('.dark-mode-text').style.display = isDark ? 'none' : 'inline';
-        }
-
-        // Check system preference on load
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.style.colorScheme = 'dark';
-            document.querySelector('.light-mode-text').style.display = 'none';
-            document.querySelector('.dark-mode-text').style.display = 'inline';
-        }
-    </script>
 </body>
 
 </html>

@@ -31,9 +31,9 @@
    ======================================== */
 
 /* 1. NATIVE LIGHT/DARK MODE - color-scheme property */
-/* :root {
+:root {
     color-scheme: light dark;
-} */
+}
 
 body {
     background-color: #f5f0eb;
@@ -42,6 +42,11 @@ body {
 }
 .icing, .drip{
     background-color: oklch(0.88 0.15 50);
+}
+.theme-toggle {
+    background: #fff;
+    color: oklch(0.2 0 0);
+    border: 2px solid oklch(0.8 0.05 280 70%);
 }
 
 /* 2. light-dark() FUNCTION - Automatic theme-aware colors */
@@ -93,22 +98,29 @@ body {
 } */
 
 /* 3. :has() SELECTOR - State-aware CSS without JavaScript */
+
+/* Theme toggle using :has() */
+
+.dark-mode-text { display: none; }
+
+/* html:has(#theme-toggle:checked) { color-scheme: dark; }
+
+html:has(#theme-toggle:checked) .light-mode-text { display: none; }
+html:has(#theme-toggle:checked) .dark-mode-text { display: inline; } */
+
+
 /* Control button text based on checkbox state */
-/* #candle-lit:checked ~ .controls .lit-text {
-    display: inline;
-}
 
-#candle-lit:checked ~ .controls .unlit-text {
+.unlit-text { display: none; }
+
+/* .cake-container:has(#candle-lit:not(:checked)) .lit-text {
     display: none;
 }
 
-#candle-lit:not(:checked) ~ .controls .lit-text {
-    display: none;
-}
-
-#candle-lit:not(:checked) ~ .controls .unlit-text {
+.cake-container:has(#candle-lit:not(:checked)) .unlit-text {
     display: inline;
-} */
+}  */
+ 
 
 /* Hide flame when candle is blown out - no JavaScript needed! */
 /* .cake-container:has(#candle-lit:not(:checked)) .flame {
