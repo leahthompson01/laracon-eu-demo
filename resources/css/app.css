@@ -30,15 +30,11 @@
    MODERN CSS FEATURES SHOWCASE
    ======================================== */
 
-/* 1. NATIVE LIGHT/DARK MODE - color-scheme property */
-:root {
-    color-scheme: light dark;
-}
 
 body {
     background-color: #f5f0eb;
-    /* background-color: var(--color-background); */
-     /* transition: background-color 0.3s ease; */
+    /* background-color: var(--color-background);
+    transition: background-color 0.3s ease; */
 }
 .icing, .drip{
     background-color: oklch(0.88 0.15 50);
@@ -103,7 +99,8 @@ body {
 
 .dark-mode-text { display: none; }
 
-/* html:has(#theme-toggle:checked) { color-scheme: dark; }
+/* html:has(#theme-toggle:checked),
+html:has(#theme-toggle:checked) * { color-scheme: dark; }
 
 html:has(#theme-toggle:checked) .light-mode-text { display: none; }
 html:has(#theme-toggle:checked) .dark-mode-text { display: inline; } */
@@ -139,7 +136,3 @@ html:has(#theme-toggle:checked) .dark-mode-text { display: inline; } */
     animation-delay: var(--delay);
 } */
 
-/* CUSTOM PROPERTIES - Each confetti piece has its own dynamic values set inline */
-/* .confetti {
-    background-color: var(--color);
-} */

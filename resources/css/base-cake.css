@@ -367,3 +367,8 @@ body {
         opacity: 0;
     }
 }
+
+/* CUSTOM PROPERTIES - Each confetti piece has its own dynamic values set inline */
+.confetti {
+    background-color: var(--color);
+}
