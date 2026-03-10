@@ -32,9 +32,9 @@
 
 
 body {
-    background-color: #f5f0eb;
-    /* background-color: var(--color-background);
-    transition: background-color 0.3s ease; */
+    /* background-color: #f5f0eb; */
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
 }
 .icing, .drip{
     background-color: oklch(0.88 0.15 50);
@@ -46,7 +46,7 @@ body {
 }
 
 /* 2. light-dark() FUNCTION - Automatic theme-aware colors */
-/* .plate {
+.plate {
     background-color: var(--color-plate);
     box-shadow:
         0 2px 0 light-dark(#b3b3b3, #4d4d4d),
@@ -91,7 +91,7 @@ body {
 
 .candle-toggle:hover {
     box-shadow: 0 6px 20px light-dark(oklch(0.5 0.15 50 / 0.3), oklch(0.8 0.25 45 / 0.15));
-} */
+}
 
 /* 3. :has() SELECTOR - State-aware CSS without JavaScript */
 
@@ -99,40 +99,40 @@ body {
 
 .dark-mode-text { display: none; }
 
-/* html:has(#theme-toggle:checked),
+html:has(#theme-toggle:checked),
 html:has(#theme-toggle:checked) * { color-scheme: dark; }
 
 html:has(#theme-toggle:checked) .light-mode-text { display: none; }
-html:has(#theme-toggle:checked) .dark-mode-text { display: inline; } */
+html:has(#theme-toggle:checked) .dark-mode-text { display: inline; }
 
 
 /* Control button text based on checkbox state */
 
 .unlit-text { display: none; }
 
-/* .cake-container:has(#candle-lit:not(:checked)) .lit-text {
+.cake-container:has(#candle-lit:not(:checked)) .lit-text {
     display: none;
 }
 
 .cake-container:has(#candle-lit:not(:checked)) .unlit-text {
     display: inline;
-}  */
+} 
  
 
 /* Hide flame when candle is blown out - no JavaScript needed! */
-/* .cake-container:has(#candle-lit:not(:checked)) .flame {
+.cake-container:has(#candle-lit:not(:checked)) .flame {
     opacity: 0;
     animation: none;
-} */
+}
 
 /* Show confetti when candle is blown out */
-/* .cake-container:has(#candle-lit:not(:checked)) .confetti-wrapper {
+.cake-container:has(#candle-lit:not(:checked)) .confetti-wrapper {
     opacity: 1;
-} */
+}
 
 /* Trigger confetti animation when candle is NOT lit */
-/* .cake-container:has(#candle-lit:not(:checked)) .confetti {
+.cake-container:has(#candle-lit:not(:checked)) .confetti {
     animation: confetti-fall 2s ease-out forwards;
     animation-delay: var(--delay);
-} */
+}
 
